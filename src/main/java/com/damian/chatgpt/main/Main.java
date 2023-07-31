@@ -41,7 +41,11 @@ public class Main {
 
                 Gson g = new Gson();
                 Response response1 = g.fromJson(response.body(), Response.class);
-                System.out.println("AI : "+response1.getChoices().get(0).getText());
+                try {
+                    System.out.println("AI : "+response1.getChoices().get(0).getText());
+                } catch (Exception e) {
+                    System.out.println("Invalid API key!");
+                }
 
 
             } catch (URISyntaxException e) {
