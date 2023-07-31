@@ -11,6 +11,7 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -18,6 +19,9 @@ public class Main {
         Scanner s = new Scanner(System.in);
         String prompt = "";
         System.out.println("Welcome to the GPT-3 Chat bot. Type EXIT to exit.");
+        System.out.print("Enter your API key : " );
+        String apiKey = "";
+        apiKey = s.nextLine();
         while(!prompt.equals("EXIT")){
             System.out.print("Enter your prompt : ");
             prompt= s.nextLine();
@@ -28,7 +32,7 @@ public class Main {
                 HttpRequest postRequest = HttpRequest.newBuilder().
                         uri(new URI("https://api.openai.com/v1/completions")).
                         header("content-type", "application/json").
-                        header("Authorization", "Bearer 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").
+                        header("Authorization", "Bearer "+apiKey).
                         POST(HttpRequest.BodyPublishers.ofString(json)).
                         build();
 
@@ -37,7 +41,7 @@ public class Main {
 
                 Gson g = new Gson();
                 Response response1 = g.fromJson(response.body(), Response.class);
-                System.out.print("AI : "+response1.getChoices().get(0).getText());
+                System.out.println("AI : "+response1.getChoices().get(0).getText());
 
 
             } catch (URISyntaxException e) {
