@@ -1,5 +1,5 @@
 # <u>`ChatGPT CLI.`<u>
-Simple CLI based chatgpt client, built on top of the `OpenAI's gpt-3.5 API`!
+Simple CLI based chatgpt client, built on top of the `OpenAI's gpt-3.5 API.`
   
 
 
